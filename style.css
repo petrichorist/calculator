@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'DS-Digital';
+  src: url('./fonts/DS-Digital.ttf');
+}
+
 body {
   background-color: #2c2c2c;
   color: #000;
@@ -10,6 +15,7 @@ body {
 
 .calculator {
   background-color: #000;
+  font-family: DS-Digital;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -20,7 +26,7 @@ body {
 
 #output {
   background-color: #23896ab8;
-  font-size: 50px;
+  font-size: 60px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -37,7 +43,8 @@ body {
 }
 
 button {
-  font-size: 24px;
+  font-family: DS-Digital;
+  font-size: 30px;
   height: 50px;
   width: 60px;
   padding: 10px;
@@ -46,7 +53,35 @@ button {
   border-radius: 2px;
 }
 
+#💥 {
+  font-size: 24px;
+  background-color: #ff0000bc;
+}
+
+#💥:hover {
+  background-color: #ff0000e9;
+}
+
+#calculate {
+  background-color: #0099ffbc;
+}
+
+#calculate:hover {
+  background-color: #0099ffe9;
+}
+
 .hidden {
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
+}
+
+footer {
+  color: #ffffff;
+  background-color: #1e5d7c;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 8px;
+  padding: 14px 0 28px;
+  text-align: center;
 }

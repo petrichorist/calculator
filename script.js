@@ -27,7 +27,7 @@ function operate(numA, operator, numB) {
     return parseFloat(subtract(numA, numB).toFixed(2));
   } else if (operator === '/') {
     return parseFloat(divide(numA, numB).toFixed(2));
-  } else if (operator === 'x') {
+  } else if (operator === '*') {
     return parseFloat(multiply(numA, numB).toFixed(2));
   } else {
     return '';
@@ -43,7 +43,7 @@ function numEnabler(bool) {
 function opEnabler(bool) {
   document.getElementById('+').disabled = bool;
   document.getElementById('-').disabled = bool;
-  document.getElementById('x').disabled = bool;
+  document.getElementById('*').disabled = bool;
   document.getElementById('/').disabled = bool;
 }
 
@@ -107,11 +107,11 @@ const choice = document.addEventListener('click', e => {
     currentOperator = '-';
     output.textContent += currentOperator;
     numStorage = '';
-  } else if (number === 'x') {
+  } else if (number === '*') {
     numEnabler(false);
     opEnabler(true);
     num1 = numStorage;
-    currentOperator = 'x';
+    currentOperator = '*';
     output.textContent += currentOperator;
     numStorage = '';
   } else if (number === '/') {
@@ -142,7 +142,7 @@ const choice = document.addEventListener('click', e => {
     numEnabler(false);
     numStorage = '';
     output.textContent = numStorage;
-    output.style.fontSize = '50px';
+    output.style.fontSize = '60px';
   }
 
   if (number === 'C') {
@@ -164,11 +164,7 @@ const choice = document.addEventListener('click', e => {
     output.textContent = numStorage;
   }
 
-  if (numStorage.length === 9) {
-    output.style.fontSize = '40px';
-  } else if (numStorage.length === 12) {
-    output.style.fontSize = '30px';
-  } else if (numStorage.length >= 15) {
+  if (numStorage.length === 8) {
     numEnabler(true);
   }
 });
