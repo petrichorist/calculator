@@ -13,7 +13,6 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   height: 400px;
   padding-left: 8px;
   border-radius: 6px;
@@ -23,7 +22,8 @@ body {
   background-color: #23896ab8;
   font-size: 50px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   height: 100px;
   width: 290px;
   margin: 0 10px 10px 0;
