@@ -24,9 +24,10 @@ body {
   border-radius: 6px;
 }
 
-#output {
-  background-color: #23896ab8;
+#outputContainer {
+  background-color: #23896ad3;
   font-size: 60px;
+  direction: rtl;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -34,6 +35,13 @@ body {
   width: 290px;
   margin: 0 10px 10px 0;
   border-radius: 5px;
+}
+
+#miniOutput {
+  font-size: 35px;
+  direction: ltr;
+  display: flex;
+  justify-content: end;
 }
 
 #keys {
