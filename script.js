@@ -3,21 +3,18 @@
 const add = function (a, b) {
   return a + b;
 };
-
 const subtract = function (a, b) {
   return a - b;
 };
-
 const divide = function (a, b) {
   return a / b;
 };
-
 const multiply = function (a, b) {
   return a * b;
 };
 
 function operate(numA, operator, numB) {
-  if (operator === '/' && numB === 0) {
+  if (operator === '÷' && numB === 0) {
     return '(:';
   }
 
@@ -25,9 +22,9 @@ function operate(numA, operator, numB) {
     return parseFloat(add(numA, numB).toFixed(2));
   } else if (operator === '-') {
     return parseFloat(subtract(numA, numB).toFixed(2));
-  } else if (operator === '/') {
+  } else if (operator === '÷') {
     return parseFloat(divide(numA, numB).toFixed(2));
-  } else if (operator === '*') {
+  } else if (operator === '×') {
     return parseFloat(multiply(numA, numB).toFixed(2));
   } else {
     return '';
@@ -43,8 +40,8 @@ function numEnabler(bool) {
 function opEnabler(bool) {
   document.getElementById('+').disabled = bool;
   document.getElementById('-').disabled = bool;
-  document.getElementById('*').disabled = bool;
-  document.getElementById('/').disabled = bool;
+  document.getElementById('×').disabled = bool;
+  document.getElementById('÷').disabled = bool;
 }
 
 function decEnabler(bool) {
@@ -108,6 +105,7 @@ const choice = document.addEventListener('click', e => {
     miniOutput.textContent += numStorage;
     miniOutput.textContent += currentOperator;
     num1 = numStorage;
+    num2 = num1;
     numStorage = '';
   } else if (number === '-') {
     numEnabler(false);
@@ -119,21 +117,21 @@ const choice = document.addEventListener('click', e => {
     miniOutput.textContent += currentOperator;
     num1 = numStorage;
     numStorage = '';
-  } else if (number === '*') {
+  } else if (number === '×') {
     numEnabler(false);
     opEnabler(true);
     decEnabler(false);
-    currentOperator = '*';
+    currentOperator = '×';
     miniOutput.textContent = '';
     miniOutput.textContent += numStorage;
     miniOutput.textContent += currentOperator;
     num1 = numStorage;
     numStorage = '';
-  } else if (number === '/') {
+  } else if (number === '÷') {
     numEnabler(false);
     opEnabler(true);
     decEnabler(false);
-    currentOperator = '/';
+    currentOperator = '÷';
     miniOutput.textContent = '';
     miniOutput.textContent += numStorage;
     miniOutput.textContent += currentOperator;
@@ -141,11 +139,19 @@ const choice = document.addEventListener('click', e => {
     numStorage = '';
   }
 
+  console.log('num1: ' + num1);
+  console.log('num2: ' + num2);
+  console.log('numStorage: ' + numStorage);
+
   if (number === '=') {
     numEnabler(false);
     opEnabler(false);
     decEnabler(false);
-    num2 = numStorage;
+    if (numStorage === '') {
+      num2 = num1;
+    } else {
+      num2 = numStorage;
+    }
     result = operate(
       parseFloat(num1, 10),
       currentOperator,
@@ -154,9 +160,12 @@ const choice = document.addEventListener('click', e => {
     numStorage = result;
     miniOutput.textContent += num2 + '=';
     output.textContent = numStorage;
+    numStorage = '';
     currentOperator = '';
     num2 = '';
   }
+
+  console.log(numStorage);
 
   if (number === 'AC') {
     numEnabler(false);

@@ -14,7 +14,7 @@ body {
 }
 
 .calculator {
-  background-color: #000;
+  background-color: #ebebeb;
   font-family: DS-Digital;
   display: flex;
   flex-direction: column;
@@ -25,7 +25,7 @@ body {
 }
 
 #outputContainer {
-  background-color: #23896ad3;
+  background-color: #75978dd7;
   font-size: 60px;
   direction: rtl;
   display: flex;
@@ -51,7 +51,7 @@ body {
 }
 
 button {
-  font-family: DS-Digital;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 30px;
   height: 50px;
   width: 60px;
@@ -67,7 +67,7 @@ button {
 }
 
 #💥:hover {
-  background-color: #ff0000e9;
+  background-color: #ff000086;
 }
 
 #calculate {
@@ -75,7 +75,25 @@ button {
 }
 
 #calculate:hover {
-  background-color: #0099ffe9;
+  background-color: #0099ff86;
+}
+
+.black {
+  background-color: #000000e0;
+  color: #fff;
+}
+
+.black:hover {
+  background-color: #000000b7;
+}
+
+.grey {
+  background-color: #555555e0;
+  color: #fff;
+}
+
+.grey:hover {
+  background-color: #555555b7;
 }
 
 .hidden {
