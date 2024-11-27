@@ -47,6 +47,10 @@ function opEnabler(bool) {
   document.getElementById('/').disabled = bool;
 }
 
+function decEnabler(bool) {
+  document.getElementById('dec').disabled = bool;
+}
+
 let calculator = document.querySelector('.calculator');
 let output = document.querySelector('#output');
 let numStorage = '';
@@ -89,6 +93,7 @@ const choice = document.addEventListener('click', e => {
     numStorage += number;
     output.textContent = numStorage;
   } else if (number === '.') {
+    decEnabler(true);
     numStorage += number;
     output.textContent = numStorage;
   }
@@ -96,6 +101,7 @@ const choice = document.addEventListener('click', e => {
   if (number === '+') {
     numEnabler(false);
     opEnabler(true);
+    decEnabler(false);
     num1 = numStorage;
     currentOperator = '+';
     output.textContent += currentOperator;
@@ -103,6 +109,7 @@ const choice = document.addEventListener('click', e => {
   } else if (number === '-') {
     numEnabler(false);
     opEnabler(true);
+    decEnabler(false);
     num1 = numStorage;
     currentOperator = '-';
     output.textContent += currentOperator;
@@ -110,6 +117,7 @@ const choice = document.addEventListener('click', e => {
   } else if (number === '*') {
     numEnabler(false);
     opEnabler(true);
+    decEnabler(false);
     num1 = numStorage;
     currentOperator = '*';
     output.textContent += currentOperator;
@@ -117,6 +125,7 @@ const choice = document.addEventListener('click', e => {
   } else if (number === '/') {
     numEnabler(false);
     opEnabler(true);
+    decEnabler(false);
     num1 = numStorage;
     currentOperator = '/';
     output.textContent += currentOperator;
@@ -126,6 +135,7 @@ const choice = document.addEventListener('click', e => {
   if (number === '=') {
     numEnabler(false);
     opEnabler(false);
+    decEnabler(false);
     num2 = numStorage;
     result = operate(
       parseFloat(num1, 10),
@@ -140,6 +150,8 @@ const choice = document.addEventListener('click', e => {
 
   if (number === 'AC') {
     numEnabler(false);
+    opEnabler(false);
+    decEnabler(false);
     numStorage = '';
     output.textContent = numStorage;
     output.style.fontSize = '60px';
@@ -147,6 +159,8 @@ const choice = document.addEventListener('click', e => {
 
   if (number === 'C') {
     numEnabler(false);
+    opEnabler(false);
+    decEnabler(false);
     numStorage = numStorage.slice(0, -1);
     output.textContent = numStorage;
   }
@@ -166,5 +180,6 @@ const choice = document.addEventListener('click', e => {
 
   if (numStorage.length === 8) {
     numEnabler(true);
+    decEnabler(true);
   }
 });
