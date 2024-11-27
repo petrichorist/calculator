@@ -1,5 +1,5 @@
 body {
-  background: #2c2c2c;
+  background-color: #2c2c2c;
   color: #000;
   display: flex;
   justify-content: center;
@@ -9,24 +9,24 @@ body {
 }
 
 .calculator {
+  background-color: #000;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  background-color: #000;
+  align-items: center;
   height: 400px;
+  padding-left: 8px;
   border-radius: 6px;
-  padding-left: 8px
 }
 
 #output {
   background-color: #23896ab8;
+  font-size: 50px;
   display: flex;
   align-items: center;
-  font-size: 50px;
+  height: 100px;
   width: 290px;
   margin: 0 10px 10px 0;
-  height: 100px;
   border-radius: 5px;
 }
 
@@ -38,10 +38,10 @@ body {
 
 button {
   font-size: 24px;
-  padding: 10px;
-  margin: 2px;
   height: 50px;
   width: 60px;
+  padding: 10px;
+  margin: 2px;
   border: none;
   border-radius: 2px;
 }
