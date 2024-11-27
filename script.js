@@ -38,29 +38,62 @@ let result;
 const choice = document.addEventListener('click', e => {
   let number = e.target.textContent;
 
-  numStorage += number;
-  output.textContent = numStorage;
+  if (number === '0') {
+    numStorage += number;
+    output.textContent = numStorage;
+  } else if (number === '1') {
+    numStorage += number;
+    output.textContent = numStorage;
+  } else if (number === '2') {
+    numStorage += number;
+    output.textContent = numStorage;
+  } else if (number === '3') {
+    numStorage += number;
+    output.textContent = numStorage;
+  } else if (number === '4') {
+    numStorage += number;
+    output.textContent = numStorage;
+  } else if (number === '5') {
+    numStorage += number;
+    output.textContent = numStorage;
+  } else if (number === '6') {
+    numStorage += number;
+    output.textContent = numStorage;
+  } else if (number === '7') {
+    numStorage += number;
+    output.textContent = numStorage;
+  } else if (number === '8') {
+    numStorage += number;
+    output.textContent = numStorage;
+  } else if (number === '9') {
+    numStorage += number;
+    output.textContent = numStorage;
+  }
 
   if (number === '+') {
-    num1 = numStorage.slice(0, -1);
+    num1 = numStorage;
     currentOperator = '+';
+    output.textContent += currentOperator;
     numStorage = '';
   } else if (number === '-') {
-    num1 = numStorage.slice(0, -1);
+    num1 = numStorage;
     currentOperator = '-';
+    output.textContent += currentOperator;
     numStorage = '';
   } else if (number === 'x') {
-    num1 = numStorage.slice(0, -1);
+    num1 = numStorage;
     currentOperator = 'x';
+    output.textContent += currentOperator;
     numStorage = '';
   } else if (number === '/') {
-    num1 = numStorage.slice(0, -1);
+    num1 = numStorage;
     currentOperator = '/';
+    output.textContent += currentOperator;
     numStorage = '';
   }
 
   if (number === '=') {
-    num2 = numStorage.slice(0, -1);
+    num2 = numStorage;
     result = operate(parseFloat(num1), currentOperator, parseFloat(num2));
     numStorage = result;
     output.textContent = numStorage;
