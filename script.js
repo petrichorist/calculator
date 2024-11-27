@@ -18,16 +18,32 @@ const multiply = function (a, b) {
 
 function operate(numA, operator, numB) {
   if (operator == '+') {
-    return add(numA, numB);
+    return parseFloat(add(numA, numB).toFixed(2));
   } else if (operator === '-') {
-    return subtract(numA, numB);
+    return parseFloat(subtract(numA, numB).toFixed(2));
   } else if (operator === '/') {
-    return divide(numA, numB);
+    return parseFloat(divide(numA, numB).toFixed(2));
   } else if (operator === 'x') {
-    return multiply(numA, numB);
+    return parseFloat(multiply(numA, numB).toFixed(2));
+  } else {
+    return '';
   }
 }
 
+function numEnabler(bool) {
+  for (let i = 0; i <= 9; i++) {
+    document.getElementById('btn' + i).disabled = bool;
+  }
+}
+
+function opEnabler(bool) {
+  document.getElementById('+').disabled = bool;
+  document.getElementById('-').disabled = bool;
+  document.getElementById('x').disabled = bool;
+  document.getElementById('/').disabled = bool;
+}
+
+let calculator = document.querySelector('.calculator');
 let output = document.querySelector('#output');
 let numStorage = '';
 let num1 = '';
@@ -68,24 +84,35 @@ const choice = document.addEventListener('click', e => {
   } else if (number === '9') {
     numStorage += number;
     output.textContent = numStorage;
+  } else if (number === '.') {
+    numStorage += number;
+    output.textContent = numStorage;
   }
 
   if (number === '+') {
+    numEnabler(false);
+    opEnabler(true);
     num1 = numStorage;
     currentOperator = '+';
     output.textContent += currentOperator;
     numStorage = '';
   } else if (number === '-') {
+    numEnabler(false);
+    opEnabler(true);
     num1 = numStorage;
     currentOperator = '-';
     output.textContent += currentOperator;
     numStorage = '';
   } else if (number === 'x') {
+    numEnabler(false);
+    opEnabler(true);
     num1 = numStorage;
     currentOperator = 'x';
     output.textContent += currentOperator;
     numStorage = '';
   } else if (number === '/') {
+    numEnabler(false);
+    opEnabler(true);
     num1 = numStorage;
     currentOperator = '/';
     output.textContent += currentOperator;
@@ -93,8 +120,14 @@ const choice = document.addEventListener('click', e => {
   }
 
   if (number === '=') {
+    numEnabler(false);
+    opEnabler(false);
     num2 = numStorage;
-    result = operate(parseFloat(num1), currentOperator, parseFloat(num2));
+    result = operate(
+      parseFloat(num1, 10),
+      currentOperator,
+      parseFloat(num2, 10)
+    );
     numStorage = result;
     output.textContent = numStorage;
     currentOperator = '';
@@ -102,12 +135,36 @@ const choice = document.addEventListener('click', e => {
   }
 
   if (number === 'AC') {
+    numEnabler(false);
     numStorage = '';
     output.textContent = numStorage;
+    output.style.fontSize = '50px';
   }
 
   if (number === 'C') {
+    numEnabler(false);
     numStorage = numStorage.slice(0, -1);
     output.textContent = numStorage;
+  }
+
+  if (number === '💥') {
+    calculator.classList.add('hidden');
+  }
+
+  if (number === '+/-') {
+    if (numStorage[0] === '-') {
+      numStorage = numStorage.slice(1);
+    } else {
+      numStorage = '-' + numStorage;
+    }
+    output.textContent = numStorage;
+  }
+
+  if (numStorage.length === 9) {
+    output.style.fontSize = '40px';
+  } else if (numStorage.length === 12) {
+    output.style.fontSize = '30px';
+  } else if (numStorage.length >= 15) {
+    numEnabler(true);
   }
 });

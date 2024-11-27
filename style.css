@@ -1,25 +1,33 @@
 body {
+  background: #2c2c2c;
   color: #000;
-  max-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
 }
 
-#calculator {
+.calculator {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* background-color: #000; */
-  width: 350px;
+  justify-content: center;
+  background-color: #000;
   height: 400px;
+  border-radius: 6px;
+  padding-left: 8px
 }
 
 #output {
-  /* background-color: rgb(0, 136, 255); */
+  background-color: #23896ab8;
   display: flex;
   align-items: center;
   font-size: 50px;
   width: 290px;
-  margin-right: 10px;
+  margin: 0 10px 10px 0;
   height: 100px;
+  border-radius: 5px;
 }
 
 #keys {
@@ -29,8 +37,15 @@ body {
 }
 
 button {
+  font-size: 24px;
   padding: 10px;
   margin: 2px;
   height: 50px;
   width: 60px;
+  border: none;
+  border-radius: 2px;
+}
+
+.hidden {
+  display: none;
 }
