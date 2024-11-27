@@ -17,6 +17,10 @@ const multiply = function (a, b) {
 };
 
 function operate(numA, operator, numB) {
+  if (operator === '/' && numB === 0) {
+    return '(:';
+  }
+
   if (operator == '+') {
     return parseFloat(add(numA, numB).toFixed(2));
   } else if (operator === '-') {
