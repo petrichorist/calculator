@@ -90,6 +90,8 @@ const choice = document.addEventListener('click', e => {
       numStorage = num1;
     }
 
+    num2 = '';
+    currentOperator = '';
     currentOperator = number;
     miniOutput.textContent = '';
     miniOutput.textContent += numStorage;
@@ -103,10 +105,12 @@ const choice = document.addEventListener('click', e => {
     opEnabler(false);
     decEnabler(false);
 
-    if (numStorage === '') {
-      num2 = num1;
-    } else {
-      num2 = numStorage;
+    if (num2 == '') {
+      if (numStorage === '') {
+        num2 = num1;
+      } else {
+        num2 = numStorage;
+      }
     }
 
     result = operate(
@@ -115,18 +119,17 @@ const choice = document.addEventListener('click', e => {
       parseFloat(num2, 10)
     );
 
+    output.textContent = result;
+    miniOutput.textContent = num1 + currentOperator + num2 + '=';
     num1 = result;
-    output.textContent = num1;
-    miniOutput.textContent += num2 + '=';
-    num2 = '';
     numStorage = '';
-    currentOperator = '';
   }
 
   if (number === 'AC') {
     numEnabler(false);
     opEnabler(false);
     decEnabler(false);
+
     num1 = '';
     num2 = '';
     numStorage = '';
@@ -139,6 +142,7 @@ const choice = document.addEventListener('click', e => {
     numEnabler(false);
     opEnabler(false);
     decEnabler(false);
+
     numStorage = numStorage.slice(0, -1);
     output.textContent = numStorage;
   }

@@ -29,6 +29,8 @@ body {
 #outputContainer {
   background-color: #75978dd7;
   font-size: 60px;
+  overflow: hidden;
+  /* white-space: nowrap; */
   display: flex;
   flex-direction: column;
   height: 100px;
