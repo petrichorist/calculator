@@ -3,12 +3,15 @@
 const add = function (a, b) {
   return a + b;
 };
+
 const subtract = function (a, b) {
   return a - b;
 };
+
 const divide = function (a, b) {
   return a / b;
 };
+
 const multiply = function (a, b) {
   return a * b;
 };
@@ -56,6 +59,7 @@ let num1 = '';
 let num2 = '';
 let currentOperator;
 let result;
+let toggleSignUsed = false;
 
 const choice = document.addEventListener('click', e => {
   let number = e.target.textContent;
@@ -72,10 +76,21 @@ const choice = document.addEventListener('click', e => {
     number === '8' ||
     number === '9'
   ) {
+    if (toggleSignUsed) {
+      numStorage = '';
+      toggleSignUsed = false;
+    }
+
     numStorage += number;
     output.textContent = numStorage;
   } else if (number === '.') {
     decEnabler(true);
+
+    if (toggleSignUsed) {
+      numStorage = '';
+      toggleSignUsed = false;
+    }
+
     numStorage += number;
     output.textContent = numStorage;
   }
@@ -97,6 +112,7 @@ const choice = document.addEventListener('click', e => {
     miniOutput.textContent += currentOperator;
     num1 = numStorage;
     numStorage = '';
+    toggleSignUsed = false;
   }
 
   if (number === '=') {
@@ -120,14 +136,16 @@ const choice = document.addEventListener('click', e => {
 
     output.textContent = result;
     miniOutput.textContent = num1 + currentOperator + num2 + '=';
-    num1 = result;
-    numStorage = num1;
+    num1 = String(result);
+    numStorage = '';
+    toggleSignUsed = false;
   }
 
   if (number === 'AC') {
     numEnabler(false);
     opEnabler(false);
     decEnabler(false);
+    toggleSignUsed = false;
 
     num1 = '';
     num2 = '';
@@ -152,12 +170,26 @@ const choice = document.addEventListener('click', e => {
   }
 
   if (number === '+/-') {
-    if (numStorage[0] === '-') {
-      numStorage = numStorage.slice(1);
+    if (numStorage !== '') {
+      if (numStorage[0] === '-') {
+        numStorage = numStorage.slice(1);
+        num1 = numStorage;
+      } else if (numStorage[0] !== '-') {
+        numStorage = '-' + numStorage;
+        num1 = numStorage;
+      }
     } else {
-      numStorage = '-' + numStorage;
+      if (num1[0] === '-') {
+        numStorage = num1.slice(1);
+        num1 = numStorage;
+      } else if (num1[0] !== '-') {
+        num1 = '-' + num1;
+        num1 = numStorage;
+      }
     }
-    output.textContent = numStorage;
+
+    output.textContent = num1;
+    toggleSignUsed = true;
   }
 
   if (numStorage.length === 9) {
