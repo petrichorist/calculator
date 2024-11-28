@@ -60,34 +60,18 @@ let result;
 const choice = document.addEventListener('click', e => {
   let number = e.target.textContent;
 
-  if (number === '0') {
-    numStorage += number;
-    output.textContent = numStorage;
-  } else if (number === '1') {
-    numStorage += number;
-    output.textContent = numStorage;
-  } else if (number === '2') {
-    numStorage += number;
-    output.textContent = numStorage;
-  } else if (number === '3') {
-    numStorage += number;
-    output.textContent = numStorage;
-  } else if (number === '4') {
-    numStorage += number;
-    output.textContent = numStorage;
-  } else if (number === '5') {
-    numStorage += number;
-    output.textContent = numStorage;
-  } else if (number === '6') {
-    numStorage += number;
-    output.textContent = numStorage;
-  } else if (number === '7') {
-    numStorage += number;
-    output.textContent = numStorage;
-  } else if (number === '8') {
-    numStorage += number;
-    output.textContent = numStorage;
-  } else if (number === '9') {
+  if (
+    number === '0' ||
+    number === '1' ||
+    number === '2' ||
+    number === '3' ||
+    number === '4' ||
+    number === '5' ||
+    number === '6' ||
+    number === '7' ||
+    number === '8' ||
+    number === '9'
+  ) {
     numStorage += number;
     output.textContent = numStorage;
   } else if (number === '.') {
@@ -96,41 +80,11 @@ const choice = document.addEventListener('click', e => {
     output.textContent = numStorage;
   }
 
-  if (number === '+') {
+  if (number === '÷' || number === '×' || number === '-' || number === '+') {
     numEnabler(false);
     opEnabler(true);
     decEnabler(false);
-    currentOperator = '+';
-    miniOutput.textContent = '';
-    miniOutput.textContent += numStorage;
-    miniOutput.textContent += currentOperator;
-    num1 = numStorage;
-    numStorage = '';
-  } else if (number === '-') {
-    numEnabler(false);
-    opEnabler(true);
-    decEnabler(false);
-    currentOperator = '-';
-    miniOutput.textContent = '';
-    miniOutput.textContent += numStorage;
-    miniOutput.textContent += currentOperator;
-    num1 = numStorage;
-    numStorage = '';
-  } else if (number === '×') {
-    numEnabler(false);
-    opEnabler(true);
-    decEnabler(false);
-    currentOperator = '×';
-    miniOutput.textContent = '';
-    miniOutput.textContent += numStorage;
-    miniOutput.textContent += currentOperator;
-    num1 = numStorage;
-    numStorage = '';
-  } else if (number === '÷') {
-    numEnabler(false);
-    opEnabler(true);
-    decEnabler(false);
-    currentOperator = '÷';
+    currentOperator = number;
     miniOutput.textContent = '';
     miniOutput.textContent += numStorage;
     miniOutput.textContent += currentOperator;
@@ -142,19 +96,16 @@ const choice = document.addEventListener('click', e => {
     numEnabler(false);
     opEnabler(false);
     decEnabler(false);
+
     if (numStorage === '') {
       num2 = num1;
     } else {
       num2 = numStorage;
     }
-    result = operate(
-      parseFloat(num1, 10),
-      currentOperator,
-      parseFloat(num2, 10)
-    );
-    numStorage = result;
+
+    num1 = operate(parseFloat(num1, 10), currentOperator, parseFloat(num2, 10));
+    output.textContent = num1;
     miniOutput.textContent += num2 + '=';
-    output.textContent = numStorage;
     num2 = '';
     numStorage = '';
     currentOperator = '';
