@@ -84,6 +84,12 @@ const choice = document.addEventListener('click', e => {
     numEnabler(false);
     opEnabler(true);
     decEnabler(false);
+
+    if (numStorage === '' && num1 !== '') {
+      // if no new number is entered, use the result stored in num1
+      numStorage = num1;
+    }
+
     currentOperator = number;
     miniOutput.textContent = '';
     miniOutput.textContent += numStorage;
@@ -103,7 +109,13 @@ const choice = document.addEventListener('click', e => {
       num2 = numStorage;
     }
 
-    num1 = operate(parseFloat(num1, 10), currentOperator, parseFloat(num2, 10));
+    result = operate(
+      parseFloat(num1, 10),
+      currentOperator,
+      parseFloat(num2, 10)
+    );
+
+    num1 = result;
     output.textContent = num1;
     miniOutput.textContent += num2 + '=';
     num2 = '';
