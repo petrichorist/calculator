@@ -86,7 +86,6 @@ const choice = document.addEventListener('click', e => {
     decEnabler(false);
 
     if (numStorage === '' && num1 !== '') {
-      // if no new number is entered, use the result stored in num1
       numStorage = num1;
     }
 
@@ -122,7 +121,7 @@ const choice = document.addEventListener('click', e => {
     output.textContent = result;
     miniOutput.textContent = num1 + currentOperator + num2 + '=';
     num1 = result;
-    numStorage = '';
+    numStorage = num1;
   }
 
   if (number === 'AC') {
@@ -143,8 +142,9 @@ const choice = document.addEventListener('click', e => {
     opEnabler(false);
     decEnabler(false);
 
-    numStorage = numStorage.slice(0, -1);
-    output.textContent = numStorage;
+    numStorage = String(numStorage).slice(0, -1);
+    num1 = numStorage;
+    output.textContent = numStorage || '0';
   }
 
   if (number === '💥') {
