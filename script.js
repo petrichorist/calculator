@@ -105,7 +105,6 @@ const choice = document.addEventListener('click', e => {
     miniOutput.textContent += numStorage;
     miniOutput.textContent += currentOperator;
     num1 = numStorage;
-    num2 = num1;
     numStorage = '';
   } else if (number === '-') {
     numEnabler(false);
@@ -156,9 +155,9 @@ const choice = document.addEventListener('click', e => {
     numStorage = result;
     miniOutput.textContent += num2 + '=';
     output.textContent = numStorage;
+    num2 = '';
     numStorage = '';
     currentOperator = '';
-    num2 = '';
   }
 
   if (number === 'AC') {
@@ -168,6 +167,7 @@ const choice = document.addEventListener('click', e => {
     num1 = '';
     num2 = '';
     numStorage = '';
+    currentOperator = '';
     output.textContent = '0';
     miniOutput.textContent = '';
   }
