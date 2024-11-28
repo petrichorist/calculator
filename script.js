@@ -139,10 +139,6 @@ const choice = document.addEventListener('click', e => {
     numStorage = '';
   }
 
-  console.log('num1: ' + num1);
-  console.log('num2: ' + num2);
-  console.log('numStorage: ' + numStorage);
-
   if (number === '=') {
     numEnabler(false);
     opEnabler(false);
@@ -165,12 +161,12 @@ const choice = document.addEventListener('click', e => {
     num2 = '';
   }
 
-  console.log(numStorage);
-
   if (number === 'AC') {
     numEnabler(false);
     opEnabler(false);
     decEnabler(false);
+    num1 = '';
+    num2 = '';
     numStorage = '';
     output.textContent = '0';
     miniOutput.textContent = '';
